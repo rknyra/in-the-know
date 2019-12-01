@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'itk_app',
     'bootstrap4',
+    'django_registration',
 ]
 
 MIDDLEWARE = [
