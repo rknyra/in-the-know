@@ -5,6 +5,15 @@ from django.dispatch import receiver
 from phone_field import PhoneField
 from pyuploadcare.dj.models import ImageField
 
+#Neighborhood Model
+class Neighborhood(models.Model):
+    hood_name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    population = models.PositiveIntegerField()
+    # admin = models.ForeignKey(Admin,on_delete=models.CASCADE) to add this later
+
+
+
 #User/Profile Model
 class Profile(models.Model):
     prof_pic = ImageField(blank=True, manual_crop="", null=True)
