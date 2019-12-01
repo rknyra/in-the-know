@@ -11,7 +11,13 @@ class Neighborhood(models.Model):
     location = models.CharField(max_length=100)
     population = models.PositiveIntegerField()
     # admin = models.ForeignKey(Admin,on_delete=models.CASCADE) to add this later
-
+    
+    
+    def __str__(self):
+        return str(self.neighborhood)
+    
+    def save_neighborhood(self):
+        self.save()
 
 
 #User/Profile Model
@@ -26,4 +32,18 @@ class Profile(models.Model):
         return str(self.user)
     
     def save_profile(self):
+        self.save()
+
+
+#Business Model
+class Business(models.Model):
+    bsns_name = models.CharField(max_length=250)
+    neighborhood = models.ForeignKey(Neighborhood,on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
+    bsns_email = models.EmailField()
+    
+    def __str__(self):
+        return str(self.bsns_name)
+    
+    def save_business(self):
         self.save()
