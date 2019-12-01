@@ -1,0 +1,17 @@
+.topBuffer {
+    margin-top: 10vh;
+}
+
+.jumbotron {
+    background-image: url("/static/images/suburbs4.jpg");
+    opacity: 0.7;
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slightOpaicty h5, p, ul{
+    background-color: 333;
+    opacity: 1;
+}
