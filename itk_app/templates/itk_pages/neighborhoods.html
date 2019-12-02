@@ -18,8 +18,15 @@
                             <li class="list-group-item"> Population: {{ neighborhood.population }} </li>
                             <li class="list-group-item"> Admin: {{ neighborhood.user }} </li>
                         </ul>
-                        <input type="submit" class="btn btn-primary btn-sm my-2" value="Join Neighborhood">
 
+                        <div class="card-footer">
+                            <form enctype="multipart/form" action="{% url 'join_neighborhood' request.user.profile.neighborhood.id %}" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                <input type="submit" class="btn btn-primary btn-sm my-2" value="Join Neighborhood">
+                                </div>
+                            </form>   
+                        </div>                   
                     </div>
                 </div>
                

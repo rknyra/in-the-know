@@ -39,6 +39,7 @@ def updateProfile(request):
 def neighborhood(request):
     neighborhoods=Neighborhood.objects.all()
     form = AddNeighborhoodForm()
+       
     
     return render(request,'itk_pages/neighborhoods.html', locals())
 
@@ -59,6 +60,15 @@ def addNeighborhood (request):
     else:
         form = AddNeighborhoodForm()
         return render(request, 'itk_pages/neighborhoods.html', locals())
+
+
+#join neighborhood
+def joinNeighborhood(request, neighborhood_id):
+    if request.method == 'POST':
+        user = request.user
+        neighborhood = get_object_or_404(Neighborhood,pk=neighborhood_id)
+    
+    return redirect('view_notices')
 
 
 #share a notice
