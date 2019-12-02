@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import *
 from django.contrib.auth.models import User
@@ -84,7 +84,7 @@ def addBusiness (request):
         form = AddBusinessForm()
         return render(request, 'itk_pages/businesses.html', locals())
 
-#search projects
+#search businesses
 def searchBusiness(request):
 
     if 'search' in request.GET and request.GET["search"]:
@@ -99,3 +99,19 @@ def searchBusiness(request):
         
         message = "you haven't searched for any business"  
         return render(request, 'itk_pages/search_results.html', locals())
+    
+
+#view health centers
+def healthCenters(request, neighborhood_id):
+    neighborhood = get_object_or_404(Neighborhood,pk=neighborhood_id)
+    health_centers = HealthCenter.objects.filter(neighborhood=neighborhood)
+    
+    return render(request,'itk_pages/health_centers.html', locals())
+
+
+#view police stations
+def policeStations(request, neighborhood_id):
+    neighborhood = get_object_or_404(Neighborhood,pk=neighborhood_id)
+    police_stations = Police.objects.filter(neighborhood=neighborhood)
+    
+    return render(request,'itk_pages/police_stations.html', locals())

@@ -11,4 +11,6 @@ urlpatterns = [
     path('add-business/',views.addBusiness,name='add_business'),
     path('businesses/',views.business,name='view_businesses'),
     path('search-businesses/',views.searchBusiness,name='search_businesses'),
+    path('health-centers/<int:neighborhood_id>',views.healthCenters,name='health_centers'),
+
 ]
