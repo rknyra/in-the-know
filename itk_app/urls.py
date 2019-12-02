@@ -13,6 +13,6 @@ urlpatterns = [
     path('search-businesses/',views.searchBusiness,name='search_businesses'),
     path('health-centers/<int:neighborhood_id>',views.healthCenters,name='health_centers'),
     path('police-stations/<int:neighborhood_id>',views.policeStations,name='police_stations'),
-
+    path('neighborhoods/',views.neighborhood,name='view_neighborhoods'),
 
 ]

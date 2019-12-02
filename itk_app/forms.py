@@ -30,3 +30,9 @@ class AddBusinessForm(forms.ModelForm):
     class Meta:
         model = Business
         exclude = ['user']
+        
+        
+class AddNeighborhoodForm(forms.ModelForm):
+    class Meta:
+        model = Neighborhood
+        exclude = ['user']

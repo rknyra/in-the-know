@@ -35,6 +35,13 @@ def updateProfile(request):
     
     return render(request, 'itk_pages/update_profile.html', locals())
 
+#neighborhoods/join a neighborhood
+def neighborhood(request):
+    neighborhoods=Neighborhood.objects.all()
+    form = AddNeighborhoodForm()
+    
+    return render(request,'itk_pages/neighborhoods.html', locals())
+
 
 #share a notice
 def shareNotice(request):
