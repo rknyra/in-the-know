@@ -45,9 +45,12 @@
                 <div class="card border-info slightOpaicty">
                  <div class="card-header"> Helpful Resources </div>
                     <ul class="list-group text-info list-group-flush">
-                        <li class="list-group-item"> Businesses </li>
-                        <li class="list-group-item"> Health Centers </li>
-                        <li class="list-group-item"> Authorities: Police Contacts </li>
+                        <li class="list-group-item"> <a href="/businesses"> Businesses </a> </li>
+                        {% if request.user.profile.neighborhood %}
+
+                        <li class="list-group-item"> <a href="{% url 'health_centers' request.user.profile.neighborhood.id%}"> Health Centers </a> </li>
+                        <li class="list-group-item"> <a href="{% url 'police_stations' request.user.profile.neighborhood.id %}"> Authorities: Police Contacts </a> </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
