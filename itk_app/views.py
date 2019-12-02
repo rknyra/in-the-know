@@ -58,11 +58,31 @@ def viewNotices(request):
     
     return render(request,'itk_pages/notices.html', locals())
 
+
 #view businesses
 def business(request):
     businesses=Business.objects.all()
+    form = AddBusinessForm()
     
     return render(request,'itk_pages/businesses.html', locals())
+
+
+#add a business
+def addBusiness (request):
+    form = AddBusinessForm()
+    
+    if request.method == 'POST':
+        form = AddBusinessForm(request.POST,request.FILES)
+        user = request.user.id
+        
+        if form.is_valid():
+            business = form.save(commit=False)
+            business.user = request.user
+            business.save()
+        return redirect('view_businesses')
+    else:
+        form = AddBusinessForm()
+        return render(request, 'itk_pages/businesses.html', locals())
 
 #search projects
 def searchBusiness(request):
