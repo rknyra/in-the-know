@@ -1,0 +1,42 @@
+{% extends 'itk_pages/base.html'%}
+{% load bootstrap4 %}
+
+
+{% block content %}
+{{ block.super }}
+
+<div class="container-fluid topBuffer">
+    <div class="jumbotron bg-img">
+        <div class="row">
+
+            {% if police_stations %}
+                {% for police_station in police_stations %}
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"> 
+                    <div class="card border-info slightOpaicty">
+                        <div class="card-header"> {{ police_station.station_name }} </div>
+                        <ul class="list-group text-info list-group-flush">
+                            <li class="list-group-item"> Neighborhood: {{ police_station.neighborhood }} </li>
+                            <li class="list-group-item"> Email: {{ police_station.email }} </li>
+                            <li class="list-group-item"> Tel: {{ police_station.tel }} </li>
+                        </ul>
+                    </div>
+                </div>
+               
+                {% endfor %}
+
+            {% else %}
+
+             <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7"> 
+                <div class="card border-info slightOpaicty">
+                 <div class="card-body"> No police station contacts yet </div>
+                </div>
+            </div>
+
+           {% endif %}
+            
+   
+        </div> <!-- end of row -->
+    </div> <!-- jumbotron ends here -->
+</div> <!-- container ends here -->
+
+{% endblock %}

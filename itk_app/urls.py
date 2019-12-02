@@ -12,5 +12,7 @@ urlpatterns = [
     path('businesses/',views.business,name='view_businesses'),
     path('search-businesses/',views.searchBusiness,name='search_businesses'),
     path('health-centers/<int:neighborhood_id>',views.healthCenters,name='health_centers'),
+    path('police-stations/<int:neighborhood_id>',views.policeStations,name='police_stations'),
+
 
 ]
