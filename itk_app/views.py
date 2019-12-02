@@ -16,6 +16,7 @@ def index(request):
 #profilePage
 def myProfile(request):
     userProfile = Profile.objects.all()
+    notices=Notice.objects.all()
 
     return render(request, 'itk_pages/profile.html', locals())
 
