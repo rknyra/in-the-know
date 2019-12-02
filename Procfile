@@ -1,1 +1,1 @@
-web: gunicorn in_the_know.wsgi --log-file -
+web: gunicorn itk_project.wsgi --log-file -
