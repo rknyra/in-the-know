@@ -10,7 +10,7 @@ import datetime as dt
 class Neighborhood(models.Model):
     location = models.CharField(max_length=100)
     hood_name = models.CharField(max_length=100)
-    population = models.PositiveIntegerField()
+    population = models.PositiveIntegerField(null=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE, default=True)
     
     

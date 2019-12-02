@@ -36,3 +36,8 @@ class AddNeighborhoodForm(forms.ModelForm):
     class Meta:
         model = Neighborhood
         exclude = ['user']
+        
+class JoinNeighborhoodForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields=['neighborhood']

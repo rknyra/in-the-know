@@ -22,6 +22,9 @@
                         <div class="card-footer">
                             <form enctype="multipart/form" action="{% url 'join_neighborhood' request.user.profile.neighborhood.id %}" method="post">
                                 {% csrf_token %}
+
+                                {% bootstrap_form joinForm layout='inline' %}
+
                                 <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-sm my-2" value="Join Neighborhood">
                                 </div>

@@ -4,6 +4,7 @@ from .forms import *
 from django.contrib.auth.models import User
 
 
+
 #landing/index page
 def index(request):
     health_centers=HealthCenter.objects.all()
@@ -35,18 +36,21 @@ def updateProfile(request):
     
     return render(request, 'itk_pages/update_profile.html', locals())
 
+
 #neighborhoods/join a neighborhood
 def neighborhood(request):
     neighborhoods=Neighborhood.objects.all()
     form = AddNeighborhoodForm()
-       
-    
+    joinForm = JoinNeighborhoodForm()
+     
     return render(request,'itk_pages/neighborhoods.html', locals())
 
 
 #add a neighborhood
 def addNeighborhood (request):
     form = AddNeighborhoodForm()
+    joinForm = JoinNeighborhoodForm()
+
     
     if request.method == 'POST':
         form = AddNeighborhoodForm(request.POST,request.FILES)
@@ -59,16 +63,24 @@ def addNeighborhood (request):
         return redirect('view_neighborhoods')
     else:
         form = AddNeighborhoodForm()
+        joinForm = JoinNeighborhoodForm(instance=request.user.profile)
+
         return render(request, 'itk_pages/neighborhoods.html', locals())
 
 
 #join neighborhood
 def joinNeighborhood(request, neighborhood_id):
-    if request.method == 'POST':
-        user = request.user
-        neighborhood = get_object_or_404(Neighborhood,pk=neighborhood_id)
+    joinForm = JoinNeighborhoodForm()
     
-    return redirect('view_notices')
+    if request.method == 'POST':
+        joinForm = JoinNeighborhoodForm(request.POST,request.FILES, instance=request.user.profile)
+        neighborhood = get_object_or_404(Neighborhood,pk=neighborhood_id)
+        if joinForm.is_valid():
+            new_occupant = joinForm.save(commit=False)
+            new_occupant.user = request.user
+            new_occupant.save()
+        return redirect('view_notices')
+
 
 
 #share a notice
