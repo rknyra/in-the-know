@@ -1,0 +1,62 @@
+{% extends 'itk_pages/base.html'%}
+{% load bootstrap4 %}
+
+
+{% block content %}
+{{ block.super }}
+
+<div class="container-fluid topBuffer">
+    <div class="jumbotron">
+        <div class="row">
+
+            <!-- ============== start of notices div ================== -->
+            {% if notices %}
+            {% for notice in notices %}
+
+            <div class="col-xs-6 col-sm-7 col-md-7 col-lg-7"> 
+
+                <div class="card border-info slightOpaicty mb-3">
+                    <div class="card-header"> Posted on: {{ notice.post_date }}</div>
+                        <div class="card-body">
+                            <h5 class="card-title"> {{ notice.notice_title }} </h5>
+                            <img class="card-img-top" src="{{ notice.notice_pic.cdn_url }}" alt="Notice Image">
+                            <p class="card-text"> {{ notice.notice_details }} </p>
+                            <p class="card-text"> Posted by: {{ notice.user }} </p>
+                        </div>
+                </div>
+            </div> 
+            {% endfor %}
+
+            {% else %}
+
+             <div class="col-xs-6 col-sm-7 col-md-7 col-lg-7 align-self-center"> 
+                <div class="card border-info slightOpaicty">
+                 <div class="card-body"> No notices/alerts/announcements posted yet </div>
+                </div>
+            </div>
+
+           {% endif %}
+            
+            <!-- ============== end of notices div ================== -->
+
+
+            <!-- ============== start of resources-links div ================== -->
+            <div class="col-xs-6 col-sm-5 col-md-5 col-lg-5"> 
+                <div class="card border-info slightOpaicty">
+                 <div class="card-header"> Helpful Resources </div>
+                    <ul class="list-group text-info list-group-flush">
+                        <li class="list-group-item"> Businesses </li>
+                        <li class="list-group-item"> Health Centers </li>
+                        <li class="list-group-item"> Authorities: Police Contacts </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ============== end of resources-links div ================== -->
+
+    
+        </div> <!-- end of row -->
+    </div> <!-- jumbotron ends here -->
+</div> <!-- container ends here -->
+
+{% endblock %}

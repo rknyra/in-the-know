@@ -5,17 +5,17 @@ from django.contrib.auth.models import User
 
 
 #landing/index page
-
 def index(request):
     
     return render(request,'index.html', locals())
+
 
 #profilePage
 def myProfile(request):
     userProfile = Profile.objects.all()
 
-      
     return render(request, 'itk_pages/profile.html', locals())
+
 
 #updateProfile
 def updateProfile(request):
@@ -33,6 +33,7 @@ def updateProfile(request):
     
     return render(request, 'itk_pages/update_profile.html', locals())
 
+
 #share a notice
 def shareNotice(request):
     form = ShareNoticeForm()
@@ -45,7 +46,14 @@ def shareNotice(request):
             announcement = form.save(commit=False)
             announcement.user = request.user
             announcement.save()
-        return redirect('notices')
+        return redirect('view_notices')
     else:
         form = ShareNoticeForm()
         return render(request, 'itk_pages/share_notice.html', locals())
+    
+
+#view notices/alerts/announcements
+def viewNotices(request):
+    notices=Notice.objects.all()
+    
+    return render(request,'itk_pages/notices.html', locals())

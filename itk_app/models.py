@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from phone_field import PhoneField
 from pyuploadcare.dj.models import ImageField
+import datetime as dt
 
 #Neighborhood Model
 class Neighborhood(models.Model):
@@ -75,10 +76,11 @@ class Notice(models.Model):
     notice_title = models.CharField(max_length=100, null=True)
     notice_pic = ImageField(blank=True, manual_crop="",null=True)
     notice_details=models.CharField(max_length=250, null=True)
+    post_date=models.DateField(auto_now_add=True, null=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE, null=True)
 
-def save_notice(self):
-    self.save()
+    def save_notice(self):
+        self.save()
 
-def __str__(self):
-    return self.title
+    def __str__(self):
+        return self.notice_title
