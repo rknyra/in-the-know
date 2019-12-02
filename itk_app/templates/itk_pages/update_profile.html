@@ -4,19 +4,10 @@
 
 {% block content %}
 
-<div class="container topBuffer">
-    <div class="row justify-content-center">
-
-        <!-- profile card div -->
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <div class="card align-items-center text-center">
-                <img class="card-img-top rounded-circle avatar" src="/static/images/itklightbulb.png" alt="Card image" style="width:200px; height:200px;">
-                <div class="card-body">
-                    <h4 class="card-title">John Doe</h4>
-                    <p class="card-text"> Bio: Some example text some example text. John Doe is an architect and engineer</p>
-                    <p class="card-text"> Email:johndoe@itk.com</p>
-                </div>
-            </div>
+<div class="container-fluid" style="height:500px;">
+<div class="jumbotron" style="height:490px; padding: 2rem 1rem;">
+        <div class="row justify-content-center">
+            <div class = "col-xs-7 col-sm-7 col-md-7 col-lg-7">
 
                 <!-- PROFILE UPDATE FORM -->
                     <form enctype="multipart/form" action="{% url 'update_profile' %}" method="post">
@@ -30,11 +21,11 @@
                     <input type="submit" class="btn btn-primary my-2" value="Submit">
                     </div>
                 </form>
-                <!-- END OF FORM -->
-        </div>
-        <!-- end of profile card div-->  
+                <!-- END OF FORM --> 
 
-    </div> <!-- end of outer row-->
+            </div> <!-- end of column -->
+        </div> <!-- end of outer row-->
+    </div> <!-- end of jumbotron -->
   </div> <!-- end of outer container-->
 
 {% endblock %}

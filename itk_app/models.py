@@ -23,8 +23,8 @@ class Neighborhood(models.Model):
 #User/Profile Model
 class Profile(models.Model):
     prof_pic = ImageField(blank=True, manual_crop="", null=True)
-    bio = models.CharField(max_length = 250, null=True)
-    email = models.EmailField()
+    bio = models.TextField(max_length = 250, null=True)
+    email = models.EmailField(max_length=100)
     neighborhood = models.ForeignKey(Neighborhood,on_delete=models.CASCADE, null=True)
     user = models.OneToOneField('auth.User',on_delete=models.CASCADE)
     
@@ -54,10 +54,18 @@ class Business(models.Model):
     bsns_name = models.CharField(max_length=250)
     neighborhood = models.ForeignKey(Neighborhood,on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
-    bsns_email = models.EmailField()
+    bsns_email = models.EmailField(max_length=100)
     
     def __str__(self):
-        return str(self.bsns_name)
+        return self.bsns_name
     
-    def save_business(self):
+    def create_business(self):
         self.save()
+    
+    def delete_business(self):
+        self.delete()
+        
+    @classmethod
+    def find_business(cls,id):
+        found_businesses = cls.objects.get(id = id)
+        return found_businesses

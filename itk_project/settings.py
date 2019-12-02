@@ -102,7 +102,7 @@ TEMPLATES = [
 
 UPLOADCARE = {
     'pub_key':'dfa8cc6c9ed08ffd064b',
-    'secret':'SECRET',
+    'secret':'cd2d80a937d0d936e829',
 }
 
 WSGI_APPLICATION = 'itk_project.wsgi.application'
