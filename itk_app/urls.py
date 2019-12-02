@@ -14,5 +14,7 @@ urlpatterns = [
     path('health-centers/<int:neighborhood_id>',views.healthCenters,name='health_centers'),
     path('police-stations/<int:neighborhood_id>',views.policeStations,name='police_stations'),
     path('neighborhoods/',views.neighborhood,name='view_neighborhoods'),
+    path('add-neighborhood/',views.addNeighborhood,name='add_neighborhood'),
+
 
 ]

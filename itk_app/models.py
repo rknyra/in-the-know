@@ -8,8 +8,8 @@ import datetime as dt
 
 #Neighborhood Model
 class Neighborhood(models.Model):
-    hood_name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
+    hood_name = models.CharField(max_length=100)
     population = models.PositiveIntegerField()
     user = models.ForeignKey(User,on_delete=models.CASCADE, default=True)
     

@@ -43,6 +43,24 @@ def neighborhood(request):
     return render(request,'itk_pages/neighborhoods.html', locals())
 
 
+#add a neighborhood
+def addNeighborhood (request):
+    form = AddNeighborhoodForm()
+    
+    if request.method == 'POST':
+        form = AddNeighborhoodForm(request.POST,request.FILES)
+        user = request.user.id
+        
+        if form.is_valid():
+            neighborhood = form.save(commit=False)
+            neighborhood.user = request.user
+            neighborhood.save()
+        return redirect('view_neighborhoods')
+    else:
+        form = AddNeighborhoodForm()
+        return render(request, 'itk_pages/neighborhoods.html', locals())
+
+
 #share a notice
 def shareNotice(request):
     form = ShareNoticeForm()
