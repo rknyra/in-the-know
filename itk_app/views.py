@@ -57,3 +57,19 @@ def viewNotices(request):
     notices=Notice.objects.all()
     
     return render(request,'itk_pages/notices.html', locals())
+
+#search projects
+def searchBusiness(request):
+
+    if 'search' in request.GET and request.GET["search"]:
+    
+        search_term = request.GET.get("search")
+        searched_businesses = Business.objects.filter(bsns_name__icontains=search_term)
+        message = f"{search_term}"
+        
+        return render(request, 'itk_pages/search_results.html', locals())
+    
+    else:
+        
+        message = "you haven't searched for any business"  
+        return render(request, 'itk_pages/search_results.html', locals())
