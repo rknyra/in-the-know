@@ -8,7 +8,7 @@
     <div class="row">
 
         <!-- profile card div -->
-        <div class="col-xs-4 col-sm-5 col-md-5 col-lg-4 align-self-start fixed-top" style="margin-top:30vh;">
+        <div class="col-xs-4 col-sm-5 col-md-5 col-lg-4 align-self-start">
             <div class="card align-items-center text-center">
 
                 {% if user.profile.prof_pic %}
@@ -26,7 +26,6 @@
                     <p class="card-text"> Bio: {{ request.user.profile.bio }}</p>
                     <p class="card-text"> Email: {{ request.user.email }}</p>
                     <p class="card-text"> Current Location: {{ request.user.profile.neighborhood }}</p>
-
                     <a href="/update-profile"> Edit Profile </a>
                 </div>
             </div>

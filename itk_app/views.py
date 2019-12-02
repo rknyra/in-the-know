@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import *
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -85,6 +86,7 @@ def joinNeighborhood(request, neighborhood_id):
 
 
 #share a notice
+@login_required(login_url='/accounts/login')
 def shareNotice(request):
     form = ShareNoticeForm()
     
@@ -103,6 +105,7 @@ def shareNotice(request):
     
 
 #view notices/alerts/announcements
+@login_required(login_url='/accounts/login')
 def viewNotices(request):
     notices=Notice.objects.all()
     
@@ -110,6 +113,7 @@ def viewNotices(request):
 
 
 #view businesses
+@login_required(login_url='/accounts/login')
 def business(request):
     businesses=Business.objects.all()
     form = AddBusinessForm()
