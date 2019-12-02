@@ -23,7 +23,7 @@ class Neighborhood(models.Model):
 #User/Profile Model
 class Profile(models.Model):
     prof_pic = ImageField(blank=True, manual_crop="", null=True)
-    bio = models.TextField(max_length = 250, null=True)
+    bio = models.CharField(max_length = 250, null=True)
     email = models.EmailField(max_length=100)
     neighborhood = models.ForeignKey(Neighborhood,on_delete=models.CASCADE, null=True)
     user = models.OneToOneField('auth.User',on_delete=models.CASCADE)
