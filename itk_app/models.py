@@ -84,3 +84,34 @@ class Notice(models.Model):
 
     def __str__(self):
         return self.notice_title
+    
+
+#Health Centers Model
+class HealthCenter(models.Model):
+    hospital_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    tel = PhoneField(blank=True, help_text="Hospital Phone Number")
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+
+    
+    
+    def __str__(self):
+        return str(self.hospital_name)
+    
+    def save_healthcenter(self):
+        self.save()
+
+#Police Dept's Model
+class Police(models.Model):
+    station_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    tel = PhoneField(blank=True, help_text="Police Station Phone Number")
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+
+    
+    
+    def __str__(self):
+        return str(self.station_name)
+    
+    def save_police(self):
+        self.save()
