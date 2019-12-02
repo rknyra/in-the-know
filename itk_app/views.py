@@ -58,6 +58,12 @@ def viewNotices(request):
     
     return render(request,'itk_pages/notices.html', locals())
 
+#view businesses
+def business(request):
+    businesses=Business.objects.all()
+    
+    return render(request,'itk_pages/businesses.html', locals())
+
 #search projects
 def searchBusiness(request):
 
