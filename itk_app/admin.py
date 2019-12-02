@@ -1,3 +1,8 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
+from .models import Neighborhood, Profile, Business
 
-# Register your models here.
+#registering the models
+admin.site.register(Neighborhood)
+admin.site.register(Profile)
+admin.site.register(Business)
