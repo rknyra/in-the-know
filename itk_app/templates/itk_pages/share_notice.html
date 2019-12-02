@@ -1,0 +1,41 @@
+ 
+{% extends 'itk_pages/base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+
+{{block.super}}
+
+
+
+<div class="container-fluid topBuffer">
+
+<div class="jumbotron">
+
+<div class="row justify-content-center">
+<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+
+<!-- SHARE NOTICE UPLOAD FORM -->
+    <form enctype="multipart/form" action="{% url 'share_notice' %}" method="post">
+
+    {% csrf_token %}
+
+    {% bootstrap_form form layout='inline' %}
+
+    <div class="form-group">
+
+    <input type="submit" class="btn btn-primary btn-sm my-2" value="Submit">
+    </div>
+   </form>
+   <!-- END OF FORM -->
+
+</div>
+</div>
+
+
+</div>
+
+</div>
+
+{% endblock %}

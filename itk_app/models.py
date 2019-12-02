@@ -72,9 +72,9 @@ class Business(models.Model):
     
 #Notices Model
 class Notice(models.Model):
-    title = models.CharField(max_length=100, null=True)
+    notice_title = models.CharField(max_length=100, null=True)
     notice_pic = ImageField(blank=True, manual_crop="",null=True)
-    description=models.CharField(max_length=250, null=True)
+    notice_details=models.CharField(max_length=250, null=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE, null=True)
 
 def save_notice(self):

@@ -6,5 +6,7 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('my-profile/',views.myProfile,name='my_profile'),
     path('update-profile/',views.updateProfile,name='update_profile'),
+    path('share-notice/',views.shareNotice,name='share_notice'),
+
     
 ]

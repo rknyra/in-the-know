@@ -18,3 +18,8 @@ class SubmitBusinessForm(forms.ModelForm):
     class Meta:
         model = Business
         fields=['bsns_name','bsns_email']
+
+class ShareNoticeForm(forms.ModelForm):
+    class Meta:
+        model = Notice
+        exclude = ['user']

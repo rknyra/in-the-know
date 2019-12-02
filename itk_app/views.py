@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from django.contrib.auth.models import User
 
 
 #landing/index page
@@ -31,3 +32,20 @@ def updateProfile(request):
         updateProf = UpdateProfileForm(instance=request.user.profile)
     
     return render(request, 'itk_pages/update_profile.html', locals())
+
+#share a notice
+def shareNotice(request):
+    form = ShareNoticeForm()
+    
+    if request.method == 'POST':
+        form = ShareNoticeForm(request.POST,request.FILES)
+        user = request.user.id
+        
+        if form.is_valid():
+            announcement = form.save(commit=False)
+            announcement.user = request.user
+            announcement.save()
+        return redirect('notices')
+    else:
+        form = ShareNoticeForm()
+        return render(request, 'itk_pages/share_notice.html', locals())
