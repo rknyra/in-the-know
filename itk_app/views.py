@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 
 #landing/index page
 def index(request):
+    health_centers=HealthCenter.objects.all()
+    police_stations=Police.objects.all()
     
     return render(request,'index.html', locals())
 

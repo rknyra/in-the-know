@@ -29,9 +29,11 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/businesses">Businesses</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Health Centers</a>
+          {%if request.user.profile.neighborhood%}
+          <a class="dropdown-item" href="{% url 'health_centers' request.user.profile.neighborhood.id%}">Health Centers</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Police Contacts</a>
+          <a class="dropdown-item" href="{% url 'police_stations' request.user.profile.neighborhood.id %}">Police Contacts</a>
+          {%endif%}
         </div>
       </li>
 

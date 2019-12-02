@@ -11,7 +11,7 @@ class Neighborhood(models.Model):
     hood_name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     population = models.PositiveIntegerField()
-    # admin = models.ForeignKey(Admin,on_delete=models.CASCADE) to add this later
+    user = models.ForeignKey(User,on_delete=models.CASCADE, default=True)
     
     
     def __str__(self):
