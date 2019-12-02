@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="container topBuffer">
-    <div class="row">
+    <div class="row justify-content-center">
 
         <!-- profile card div -->
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -15,26 +15,24 @@
                     <h4 class="card-title">John Doe</h4>
                     <p class="card-text"> Bio: Some example text some example text. John Doe is an architect and engineer</p>
                     <p class="card-text"> Email:johndoe@itk.com</p>
-                    <a href="/update-profile"> Edit Profile </a>
                 </div>
             </div>
+
+                <!-- PROFILE UPDATE FORM -->
+                    <form enctype="multipart/form" action="{% url 'update_profile' %}" method="post">
+
+                    {% csrf_token %}
+
+                    {% bootstrap_form updateProf  %}
+
+                    <div class="form-group">
+
+                    <input type="submit" class="btn btn-primary my-2" value="Submit">
+                    </div>
+                </form>
+                <!-- END OF FORM -->
         </div>
-        <!-- end of profile card div-->
-
-
-
-        <!-- user posts/posted notices div-->
-          <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-            <h4>Notices I have shared</h4>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"> Notice Title </h5>
-                    <p class="card-text"> Notice Description </p>
-                </div>
-            </div>
-        </div>
-        <!-- end of user posts div -->
-    
+        <!-- end of profile card div-->  
 
     </div> <!-- end of outer row-->
   </div> <!-- end of outer container-->
