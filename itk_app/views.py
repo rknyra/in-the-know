@@ -139,6 +139,7 @@ def addBusiness (request):
         return render(request, 'itk_pages/businesses.html', locals())
 
 #search businesses
+@login_required(login_url='/accounts/login')
 def searchBusiness(request):
 
     if 'search' in request.GET and request.GET["search"]:
