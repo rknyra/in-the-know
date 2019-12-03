@@ -10,7 +10,7 @@
         <div class="row">
 
                 {% for neighborhood in neighborhoods %}
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"> 
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 mb-3"> 
                     <div class="card border-info slightOpaicty">
                         <div class="card-header"> {{ neighborhood.location }} </div>
                         <ul class="list-group text-info list-group-flush">
@@ -26,7 +26,7 @@
                                 {% bootstrap_form joinForm layout='inline' %}
 
                                 <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-sm my-2" value="Join Neighborhood">
+                                <input type="submit" class="form-control btn btn-primary btn-sm my-2" value="Join Neighborhood">
                                 </div>
                             </form>   
                         </div>                   
