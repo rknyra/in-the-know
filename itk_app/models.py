@@ -78,6 +78,8 @@ class Notice(models.Model):
     notice_details=models.CharField(max_length=250, null=True)
     post_date=models.DateField(auto_now_add=True, null=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE, null=True)
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null=True)
+
 
     def save_notice(self):
         self.save()

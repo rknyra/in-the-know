@@ -6,6 +6,8 @@
 {{ block.super }}
 
 <div class="container-fluid topBuffer">
+<h3 class="text-center"> {{ request.user.profile.neighborhood }} Health Center Contacts </h3>
+
     <div class="jumbotron bg-img">
         <div class="row">
 
@@ -25,12 +27,11 @@
                 {% endfor %}
 
             {% else %}
-
-             <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7"> 
-                <div class="card border-info slightOpaicty">
-                 <div class="card-body"> No health centers contacts yet </div>
+                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center align-items-center mx-auto"> 
+                    <div class="card border-info slightOpaicty">
+                    <div class="card-body"> No health center contacts posted yet for {{ request.user.profile.neighborhood }} </div>
+                    </div>
                 </div>
-            </div>
 
            {% endif %}
             

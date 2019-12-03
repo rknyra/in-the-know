@@ -110,6 +110,11 @@ def shareNotice(request):
 @login_required(login_url='/accounts/login')
 def viewNotices(request):
     notices=Notice.objects.all()
+    neighborhood = get_object_or_404(Neighborhood,pk=request.user.profile.neighborhood.id)
+    neighborhoodNotices=Notice.objects.filter(neighborhood=neighborhood)
+    print(notices, "=====ALL NOTICES======")
+    print(notices, "======RESPECTIVE HOOD NOTICES=====")
+
     
     return render(request,'itk_pages/notices.html', locals())
 
