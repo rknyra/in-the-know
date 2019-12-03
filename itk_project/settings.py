@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'django_registration',
     'phone_field',
     'pyuploadcare.dj',
+
 ]
 
 MIDDLEWARE = [
