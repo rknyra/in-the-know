@@ -6,7 +6,22 @@
 {{ block.super }}
 
 <div class="container-fluid topBuffer">
+        <div class="row"> 
+            <div style="display:flex; align-items:baseline;">
+                <h5 class="mr-2"> Select a neighborhood to join: </h5>
+                <form enctype="multipart/form" action="{% url 'join_neighborhood' request.user.profile.neighborhood.id %}" method="post" style="display:flex; align-items:baseline;">
+                    {% csrf_token %}
+
+                    {% bootstrap_form joinForm layout='inline' %}
+
+                    <div class="form-group">
+                    <input type="submit" class="form-control btn btn-primary btn-sm ml-2 my-2" value="Join Neighborhood">
+                    </div>
+                </form>   
+            </div> 
+        </div>
     <div class="jumbotron bg-img">
+       
         <div class="row">
 
                 {% for neighborhood in neighborhoods %}
@@ -18,18 +33,6 @@
                             <li class="list-group-item"> Population: {{ neighborhood.population }} </li>
                             <li class="list-group-item"> Admin: {{ neighborhood.user }} </li>
                         </ul>
-
-                        <div class="card-footer">
-                            <form enctype="multipart/form" action="{% url 'join_neighborhood' request.user.profile.neighborhood.id %}" method="post">
-                                {% csrf_token %}
-
-                                {% bootstrap_form joinForm layout='inline' %}
-
-                                <div class="form-group">
-                                <input type="submit" class="form-control btn btn-primary btn-sm my-2" value="Join Neighborhood">
-                                </div>
-                            </form>   
-                        </div>                   
                     </div>
                 </div>
                
