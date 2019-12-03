@@ -40,12 +40,17 @@
         {% for notice in userNotices %}
 
                <div class="card border-info slightOpaicty mb-3">
-                    <div class="card-header"> Posted on: {{ notice.post_date }}</div>
-                        <div class="card-body">
-                            <h5 class="card-title"> {{ notice.notice_title }} </h5>
-                            <img class="card-img-top" src="{{ notice.notice_pic.cdn_url }}" alt="Notice Image" style="max-height:250px; max-width:250px;">
-                            <p class="card-text"> {{ notice.notice_details }} </p>
-                            <p class="card-text"> Posted by: {{ notice.user }} </p>
+                    <div class="card-header"> {{ notice.notice_title }} </div>
+
+                        <div class="card-body row">
+
+                            <div class="col-sm-5">
+                                <img class="card-img-top" src="{{ notice.notice_pic.cdn_url }}" alt="Notice Image" style="max-height:250px; max-width:250px;">
+                            </div>
+                            <div class="col-sm-7 align-self-center">
+                                <p class="card-text"> {{ notice.notice_details }} </p>
+                                <p class="card-text"> Posted on: {{ notice.post_date }} <br> by: {{ notice.user }} </p>
+                            </div>
                         </div>
                 </div>
         {% endfor %}
