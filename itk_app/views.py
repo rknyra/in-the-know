@@ -83,13 +83,13 @@ def joinNeighborhood(request, neighborhood_id):
             new_occupant = joinForm.save(commit=False)
             new_occupant.user = request.user
             new_occupant.save()
-        return redirect('view_notices')
+        return redirect('view_notices', neighborhood_id)
 
 
 
 #share a notice
 @login_required(login_url='/accounts/login')
-def shareNotice(request):
+def shareNotice(request, neighborhood_id):
     form = ShareNoticeForm()
     
     if request.method == 'POST':
@@ -100,7 +100,7 @@ def shareNotice(request):
             announcement = form.save(commit=False)
             announcement.user = request.user
             announcement.save()
-        return redirect('view_notices')
+        return redirect('view_notices', neighborhood_id)
     else:
         form = ShareNoticeForm()
         return render(request, 'itk_pages/share_notice.html', locals())
@@ -108,10 +108,10 @@ def shareNotice(request):
 
 #view notices/alerts/announcements
 @login_required(login_url='/accounts/login')
-def viewNotices(request):
+def viewNotices(request, neighborhood_id):
     notices=Notice.objects.all()
-    neighborhood = get_object_or_404(Neighborhood,pk=request.user.profile.neighborhood.id)
-    neighborhoodNotices=Notice.objects.filter(neighborhood=neighborhood)
+    neighborhood = get_object_or_404(Neighborhood,pk=neighborhood_id)
+    neighborhoodNotices = Notice.objects.filter(neighborhood=neighborhood)
     print(notices, "=====ALL NOTICES======")
     print(notices, "======RESPECTIVE HOOD NOTICES=====")
 
