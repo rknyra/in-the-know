@@ -43,21 +43,27 @@
           {%endif%}
         </div>
       </li>
+        
+        {% if user.is_authenticated %}
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          NoticeBoard
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-          {% if request.user.profile.neighborhood %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              NoticeBoard
+            </a>
 
-          <a class="dropdown-item" href="{% url 'view_notices' request.user.profile.neighborhood.id%}">View Notices</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{% url 'share_notice' request.user.profile.neighborhood.id%}">Share Notice</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                  {% if request.user.profile.neighborhood %}
+
+                  <a class="dropdown-item" href="{% url 'view_notices' request.user.profile.neighborhood.id%}">View Notices</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url 'share_notice' request.user.profile.neighborhood.id%}">Share Notice</a>
+                  
+                  {% endif %}
+                </div>
+          </li>
           
-          {% endif %}
-        </div>
-      </li>
+        {% endif %}
+
       
        <li>
         <a class="nav-link" href="/logout"> | <i class="fa fa-sign-out" style="font-size:20px"></i> </i></a>
