@@ -41,6 +41,7 @@ def updateProfile(request):
 
 
 #neighborhoods/join a neighborhood
+@login_required(login_url='/accounts/login')
 def neighborhood(request):
     neighborhoods=Neighborhood.objects.all()
     form = AddNeighborhoodForm()
