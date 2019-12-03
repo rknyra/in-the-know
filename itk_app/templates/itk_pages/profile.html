@@ -34,9 +34,11 @@
 
         <!-- user posts/posted notices div-->
         {% if userNotices %}
-        {% for notice in userNotices %}
           <div class="col-xs-8 col-sm-7 col-md-7 col-lg-8 ml-auto">
+
             <h4>Notices I have shared</h4>
+        {% for notice in userNotices %}
+
                <div class="card border-info slightOpaicty mb-3">
                     <div class="card-header"> Posted on: {{ notice.post_date }}</div>
                         <div class="card-body">
@@ -46,8 +48,9 @@
                             <p class="card-text"> Posted by: {{ notice.user }} </p>
                         </div>
                 </div>
-         </div>
         {% endfor %}
+
+         </div>
 
         {% else %}
              <div class="col-xs-8 col-sm-7 col-md-7 col-lg-8 align-self-center"> 
